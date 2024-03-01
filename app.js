@@ -11,8 +11,14 @@ const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const articleRouter = require('./routes/api/article');
+const loginRouter = require('./routes/api/login');
 
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,10 +30,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
-app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/api/article', articleRouter);
+app.use('/api/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -65,9 +71,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.get('/article/list', (req, res, next) => {
-  res.json({msg: 'This is CORS-enabled for all origins!'})
-})
+// app.get('/article/list', (req, res, next) => {
+//   res.json({msg: 'This is CORS-enabled for all origins!'})
+// })
 
 app.listen(80, () => {
   console.log('CORS-enabled web server listening on port 80')
@@ -80,6 +86,5 @@ app.use((err, req, res, next) => {
   res.status(400).send(err.message)
 })
 
-app.listen(3000)
 
 module.exports = app;
