@@ -6,7 +6,7 @@ exports.login = async (req, res, next) => {
 
     res.cookie('uniqueId', uniqueId, {
       maxAge: 900000,
-      httpOnly: true,
+      httpOnly: false,
     });
     res.header('Access-Control-Expose-Headers', 'Content-Disposition');
     res.status(200).json({ uniqueId });
