@@ -16,7 +16,7 @@ const loginRouter = require('./routes/api/login');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173', 'https://ab-test-blog-fe.vercel.app'],
   credentials: true
 }));
 
@@ -75,9 +75,9 @@ app.use(function(err, req, res, next) {
 //   res.json({msg: 'This is CORS-enabled for all origins!'})
 // })
 
-app.listen(80, () => {
-  console.log('CORS-enabled web server listening on port 80')
-})
+// app.listen(80, () => {
+//   console.log('CORS-enabled web server listening on port 80')
+// })
 
 app.use(cookieParser())
 
