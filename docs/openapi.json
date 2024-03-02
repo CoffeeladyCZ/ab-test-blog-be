@@ -1,0 +1,140 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Articles API",
+    "version": "1.0.0",
+    "description": "API documentation for managing articles"
+  },
+  "paths": {
+    "/api/article/list": {
+      "get": {
+        "summary": "List of Articles",
+        "description": "Get a list of all articles.",
+        "responses": {
+          "200": {
+            "description": "List of articles.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Article"
+                  }
+                }
+              }
+          }
+        }
+      }
+      }
+    },
+    "/api/article/{id}": {
+      "get": {
+        "summary": "Article Details",
+        "description": "Get details of a article.",
+        "parameters": [
+          {
+            "id": "id",
+            "in": "path",
+            "required": true,
+            "description": "Article identifier",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detail of the article.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "get": {
+        "summary": "Login",
+        "description": "Login to the system.",
+        "responses": {
+          "200": {
+            "description": "Login successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "items": {
+                    "$ref": "#/components/schemas/Login"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Article": {
+          "type": "object",
+          "properties": {
+            "article_id": {
+              "type": "string",
+              "description": "id of article",
+              "example": "1"
+            },
+            "title": {
+              "type": "string",
+              "description": "Title of article",
+              "example": "Cafe Review"
+            },
+            "content": {
+              "type": "string",
+              "description": "Content of article",
+              "example": "This is a review of a cafe"
+            },
+            "perex": {
+              "type": "string",
+              "description": "Short description of article",
+              "example": "This is a review of a cafe"
+            },
+            "subtitle": {
+              "type": "string",
+              "description": "Subtitle of article",
+              "example": "Cafe Review"
+            },
+            "image": {
+              "type": "array",
+              "description": "Image URLs"
+            },
+            "ab_test": {
+              "type": "string",
+              "description": "A/B test name",
+              "example": "test_ab_test"
+            },
+            "version": {
+              "type": "string",
+              "description": "Version of article",
+              "example": "test_version"
+            }
+          },
+          "required": ["title", "content", "subtitle"]
+      },
+      "Login": {
+        "type": "string",
+        "properties": {
+          "uniqueId": {
+            "type": "string",
+            "description": "Unique ID of user",
+            "example": "test"
+          }
+        }
+      }
+    }
+  }
+}
