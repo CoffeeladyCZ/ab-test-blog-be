@@ -10,7 +10,6 @@ var logger = require('morgan');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 
-const indexRouter = require('./routes/index');
 const articleRouter = require('./routes/api/article');
 const loginRouter = require('./routes/api/login');
 
@@ -32,7 +31,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
-app.use('/', indexRouter);
 app.use('/api/article', articleRouter);
 app.use('/api/login', loginRouter);
 
