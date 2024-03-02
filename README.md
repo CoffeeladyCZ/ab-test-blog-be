@@ -9,4 +9,35 @@ Node.js, Express.js
 You need to add:
 `MONGO_URL` with connection to your MongoDB
 
+Model schema for one article is:
+```js
+{
+  title: {
+    type: String,
+    required: true,
+  },
+  subtitle: {
+    type: String,
+  },
+  perex: {
+    type: String,
+  },
+  ab_test: {
+    type: String | null,
+  },
+  version: {
+    type: String,
+  },
+  content: {
+    type: String,
+  },
+  image: { 
+    type: String,
+  }
+};
+```
+You also need to change variable for cors origin in `app.js`.
+
+The api documentation is available at route */api-docs/*.
+
 MDI Licence

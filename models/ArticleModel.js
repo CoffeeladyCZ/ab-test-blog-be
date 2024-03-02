@@ -9,6 +9,7 @@ const ArticleSchema = new Schema({
   },
   subtitle: {
     type: String,
+    required: true,
   },
   perex: {
     type: String,
@@ -21,6 +22,7 @@ const ArticleSchema = new Schema({
   },
   content: {
     type: String,
+    required: true,
   },
   image: { 
     type: String,

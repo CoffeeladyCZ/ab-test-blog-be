@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 var logger = require('morgan');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
 
 const indexRouter = require('./routes/index');
 const articleRouter = require('./routes/api/article');
@@ -34,6 +35,9 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.use('/api/article', articleRouter);
 app.use('/api/login', loginRouter);
+
+const openapiSpecification = JSON.parse(fs.readFileSync('docs/openapi.json', 'utf8'));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
