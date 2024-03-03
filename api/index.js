@@ -20,7 +20,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.use('/api/article', articleRouter);
+app.use('/api/article', articleRouter)
 app.use('/api/login', loginRouter);
 
 const openapiSpecification = JSON.parse(fs.readFileSync(path.join(__dirname, 'docs', 'openapi.json'), 'utf8'));
