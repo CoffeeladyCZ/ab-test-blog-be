@@ -16,7 +16,7 @@ const loginRouter = require('./routes/api/login');
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://ab-test-blog-fe.vercel.app'],
+  origin: ['http://localhost:5173', 'https://ab-test-blog-fe.vercel.app', 'https://ab-test-blog-fe-git-16-add-backend-coffeeladycz.vercel.app'],
   credentials: true
 }));
 
