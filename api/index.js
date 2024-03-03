@@ -16,11 +16,11 @@ const loginRouter = require('./routes/api/login');
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://ab-test-blog-fe.vercel.app', 'https://ab-test-blog-6w9o5gko2-coffeeladycz.vercel.app'],
+  origin: ['http://localhost:5173', 'https://ab-test-blog-fe.vercel.app', 'https://https://ab-test-blog-fe-git-16-add-backend-coffeeladycz.vercel.app/'],
   credentials: true
 }));
 
-app.use('/api/article', articleRouter);
+app.use('/api/article', articleRouter)
 app.use('/api/login', loginRouter);
 
 const openapiSpecification = JSON.parse(fs.readFileSync(path.join(__dirname, 'docs', 'openapi.json'), 'utf8'));
