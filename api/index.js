@@ -10,9 +10,6 @@ var logger = require('morgan');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 
-const articleRouter = require('./routes/api/article');
-const loginRouter = require('./routes/api/login');
-
 const app = express();
 
 app.use(cors({
@@ -20,11 +17,8 @@ app.use(cors({
   credentials: true
 }));
 
-app.use('/api/article', articleRouter)
-app.use('/api/login', loginRouter);
-
-const openapiSpecification = JSON.parse(fs.readFileSync(path.join(__dirname, 'docs', 'openapi.json'), 'utf8'));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+const articleRouter = require('./routes/api/article');
+const loginRouter = require('./routes/api/login');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -32,6 +26,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
+
+app.use('/api/article', articleRouter)
+app.use('/api/login', loginRouter);
+
+const openapiSpecification = JSON.parse(fs.readFileSync(path.join(__dirname, 'docs', 'openapi.json'), 'utf8'));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -68,8 +68,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-app.use(cookieParser())
 
 // error handler
 app.use((err, req, res, next) => {

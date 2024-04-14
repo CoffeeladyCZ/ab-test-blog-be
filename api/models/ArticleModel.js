@@ -24,6 +24,10 @@ const ArticleSchema = new Schema({
     type: String,
     required: true,
   },
+  article_id: {
+    type: String,
+    required: true,
+  },
   image: { 
     type: String,
   }
