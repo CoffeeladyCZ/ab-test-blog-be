@@ -1,6 +1,6 @@
-## Backend for A/B test app
+## Backend for blog app
 
-RestAPI for frontend application. Contained API for article detail, article list and fake login.
+RestAPI for [frontend application](https://github.com/CoffeeladyCZ/blog-app-fe-vue). Contained API for article detail, article list and fake login.
 
 ### Tech stack
 Node.js, Express.js, MongoDB
@@ -32,6 +32,9 @@ Model schema for one article is:
     type: String,
   },
   image: { 
+    type: String,
+  },
+  article_id: {
     type: String,
   }
 };

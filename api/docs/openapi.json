@@ -54,6 +54,55 @@
             }
           }
         }
+      },
+      "put": {
+        "summary": "Update Article",
+        "description": "Update an article.",
+        "parameters": [
+          {
+            "id": "id",
+            "in": "path",
+            "required": true,
+            "description": "Article identifier",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Article"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Article updated successfully."
+          }
+        }
+      }
+    },
+    "/api/article/create": {
+      "post": {
+        "summary": "Create Article",
+        "description": "Create a new article.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Article"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Article created successfully."
+          }
+        }
       }
     },
     "/api/login": {
